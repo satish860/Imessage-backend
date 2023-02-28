@@ -1,4 +1,6 @@
-﻿namespace IMessager.Api.Types
+﻿using System.Security.Claims;
+
+namespace IMessager.Api.Types
 {
     public class User
     {
@@ -11,15 +13,15 @@
     {
         public IEnumerable<User> SearchUsers(string username)
         {
-            return Enumerable.Empty<User>();    
+            return Enumerable.Empty<User>();
         }
     }
 
     public class UserMutations
     {
-        public CreateUserNameResponse CreateUserName(string username)
+        public CreateUserNameResponse CreateUserName(string username,ClaimsPrincipal claimsPrincipal)
         {
-            return null;
+            return new CreateUserNameResponse { Sucess = true };
         }
     }
 
@@ -27,6 +29,6 @@
     {
         public bool Sucess { get; set; }
 
-        public string Error { get; set; }
+        public string? Error { get; set; }
     }
 }
